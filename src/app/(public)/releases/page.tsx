@@ -22,21 +22,21 @@ export default function ReleasesPage() {
   const reversedVideos = [...VIDEOS].reverse();
 
   return (
-    <div className="min-h-screen bg-[#050508] text-white pt-32 pb-20">
+    <div className="min-h-screen bg-[#050508] text-white pt-24 sm:pt-32 pb-16 sm:pb-20">
       
       {/* Header */}
-      <div className="max-w-4xl mx-auto px-6 mb-20">
-        <h1 className="text-5xl md:text-7xl font-black text-white uppercase tracking-tighter mb-4 font-display">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 mb-12 sm:mb-20">
+        <h1 className="text-4xl sm:text-5xl md:text-7xl font-black text-white uppercase tracking-tighter mb-3 sm:mb-4 font-display">
           Releases
         </h1>
-        <p className="text-xl text-white/50 max-w-2xl font-light">
+        <p className="text-base sm:text-xl text-white/50 max-w-2xl font-light">
            Visualizers and signals transmitted from the void.
         </p>
       </div>
 
       {/* Timeline */}
-      <div className="max-w-5xl mx-auto px-6">
-        <div className="relative border-l border-white/5 ml-4 md:ml-0 md:border-none">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6">
+        <div className="relative border-l border-white/5 ml-2 sm:ml-4 md:ml-0 md:border-none">
             {reversedVideos.map((video, index) => (
                 <VideoTimelineItem 
                     key={video.id}
@@ -50,7 +50,7 @@ export default function ReleasesPage() {
       </div>
       
       {/* Background Ambience */}
-      <div className="fixed bottom-0 left-0 w-full h-[500px] bg-gradient-to-t from-crimson/10 to-transparent pointer-events-none -z-10"></div>
+      <div className="fixed bottom-0 left-0 w-full h-[300px] sm:h-[500px] bg-gradient-to-t from-crimson/10 to-transparent pointer-events-none -z-10"></div>
     </div>
   );
 }

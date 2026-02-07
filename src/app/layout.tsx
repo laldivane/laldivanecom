@@ -54,6 +54,8 @@ export const viewport = {
 };
 
 import { Outfit, Syne } from "next/font/google";
+import CustomCursor from "@/components/CustomCursor";
+import VFX from "@/components/VFX";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -78,6 +80,8 @@ export default function RootLayout({
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-25..0&display=swap" />
       </head>
       <body className="bg-bg text-foreground antialiased selection:bg-crimson/30 overflow-x-hidden">
+        <CustomCursor />
+        <VFX />
         {children}
       </body>
     </html>

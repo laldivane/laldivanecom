@@ -4,12 +4,12 @@
 :root {
   /* Obsidian & Crimson Palette - Premium Brand Identity */
   --bg: #050508;
-  --fg: #EDEDED;
-  --crimson: #B00020;
+  --fg: #ededed;
+  --crimson: #b00020;
   --crimson-glow: rgba(176, 0, 32, 0.35);
   --muted: rgba(237, 237, 237, 0.65);
   --border: rgba(237, 237, 237, 0.12);
-  
+
   /* Atomic RGB values for Tailwind-like opacity control */
   --rgb-bg: 5, 5, 8;
   --rgb-fg: 237, 237, 237;
@@ -23,19 +23,13 @@
 @theme {
   --font-sans: var(--font-outfit);
   --font-display: var(--font-syne);
-  
+
   --color-bg: var(--bg);
   --color-foreground: var(--fg);
   --color-crimson: var(--crimson);
   --color-crimson-glow: var(--crimson-glow);
   --color-muted: var(--muted);
   --color-borderc: var(--border);
-  
-  /* Legacy compatibility for components using rgb variables */
-  --color-text-primary: var(--fg);
-  --color-text-secondary: var(--muted);
-  --color-panel: rgba(var(--rgb-bg), 0.8);
-  --color-panel2: rgba(var(--rgb-bg), 0.5);
 }
 
 /* Base styles */
@@ -47,31 +41,32 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 /* Premium selection */
 ::selection {
-  background: rgb(var(--crimson) / 0.9);
-  color: rgb(var(--bg));
+  background: var(--crimson);
+  color: var(--bg);
 }
 
 /* Custom scrollbar - PSI friendly width */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgb(var(--bg));
+  background: var(--bg);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgb(var(--border) / 0.8);
+  background: var(--border);
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgb(var(--crimson));
+  background: var(--crimson);
 }
 
 /* Focus ring - A11y Requirement */
@@ -129,12 +124,52 @@ textarea::placeholder {
 
 /* Glass effect */
 .glass {
-  background: rgb(var(--panel) / 0.8);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(5, 5, 8, 0.7);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* Noise Katmanı Kaldırıldı - Temiz Obsidian Görünümü */
+/* VFX Overlays - Optimized for Performance */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.015;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+.scanlines {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9998;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 2px,
+    rgba(0, 0, 0, 0.05) 2px,
+    rgba(0, 0, 0, 0.05) 4px
+  );
+  opacity: 1;
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Vignette - Simple & Fast */
+.vignette-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9997;
+  background: radial-gradient(circle at center, transparent 0%, rgba(5, 5, 8, 0.3) 100%);
+  will-change: transform;
+  transform: translateZ(0);
+}
 
 /* Animation utilities */
 @keyframes fadeIn {
@@ -168,16 +203,16 @@ textarea::placeholder {
 
 /* Global Button Styles */
 .btn-primary {
-  @apply bg-crimson text-bg font-black uppercase tracking-widest text-xs px-5 py-2.5 rounded-xl 
-         transition-all duration-300 hover:scale-105 active:scale-95 
-         shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)]
-         border border-white/10 hover:border-white/20;
+  @apply bg-crimson text-white font-black uppercase tracking-[0.2em] text-[10px] px-8 py-4 rounded-full 
+         transition-all duration-500 hover:scale-105 active:scale-95 
+         shadow-[0_0_30px_rgba(176,0,32,0.3)] hover:shadow-[0_0_50px_rgba(176,0,32,0.6)]
+         border border-white/10 hover:border-crimson/50;
 }
 
 .btn-secondary {
-  @apply bg-panel2 text-muted font-bold uppercase tracking-widest text-[10px] px-4 py-2 rounded-xl
-         border border-borderc transition-all duration-300
-         hover:text-text-primary hover:border-crimson/40 hover:bg-black/40;
+  @apply bg-white/5 text-muted font-black uppercase tracking-[0.2em] text-[10px] px-8 py-4 rounded-full
+         border border-white/10 transition-all duration-500
+         hover:text-foreground hover:border-white/30 hover:bg-white/10;
 }
 
 /* Material Symbols - Premium Configuration */
