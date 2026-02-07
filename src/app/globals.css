@@ -1,0 +1,204 @@
+@import "tailwindcss";
+@import "../styles/tokens.css";
+
+:root {
+  /* Obsidian & Crimson Palette - Premium Brand Identity */
+  --bg: #050508;
+  --fg: #EDEDED;
+  --crimson: #B00020;
+  --crimson-glow: rgba(176, 0, 32, 0.35);
+  --muted: rgba(237, 237, 237, 0.65);
+  --border: rgba(237, 237, 237, 0.12);
+  
+  /* Atomic RGB values for Tailwind-like opacity control */
+  --rgb-bg: 5, 5, 8;
+  --rgb-fg: 237, 237, 237;
+  --rgb-crimson: 176, 0, 32;
+
+  /* Fonts */
+  --font-outfit: "Outfit", sans-serif;
+  --font-syne: "Syne", sans-serif;
+}
+
+@theme {
+  --font-sans: var(--font-outfit);
+  --font-display: var(--font-syne);
+  
+  --color-bg: var(--bg);
+  --color-foreground: var(--fg);
+  --color-crimson: var(--crimson);
+  --color-crimson-glow: var(--crimson-glow);
+  --color-muted: var(--muted);
+  --color-borderc: var(--border);
+  
+  /* Legacy compatibility for components using rgb variables */
+  --color-text-primary: var(--fg);
+  --color-text-secondary: var(--muted);
+  --color-panel: rgba(var(--rgb-bg), 0.8);
+  --color-panel2: rgba(var(--rgb-bg), 0.5);
+}
+
+/* Base styles */
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Premium selection */
+::selection {
+  background: rgb(var(--crimson) / 0.9);
+  color: rgb(var(--bg));
+}
+
+/* Custom scrollbar - PSI friendly width */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(var(--bg));
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--border) / 0.8);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--crimson));
+}
+
+/* Focus ring - A11y Requirement */
+*:focus-visible {
+  outline: 2px solid rgb(var(--crimson));
+  outline-offset: 2px;
+}
+
+/* Smooth transitions globally */
+button,
+a,
+input,
+select,
+textarea {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Premium input styling */
+input,
+select,
+textarea {
+  background: rgb(var(--panel2));
+  border: 1px solid rgb(var(--border));
+  color: rgb(var(--text-primary));
+  font-size: 16px; /* Best for mobile inputs to prevent zoom */
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: rgb(var(--muted));
+}
+
+/* Gradient text utility */
+.gradient-text {
+  background: linear-gradient(
+    135deg,
+    rgb(var(--crimson)) 0%,
+    rgb(200 200 200) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glow effect */
+.glow-crimson {
+  box-shadow:
+    0 0 40px rgb(var(--crimson) / 0.1),
+    0 0 80px rgb(var(--crimson) / 0.05);
+}
+
+.glow-crimson-sm {
+  box-shadow: 0 0 20px rgb(var(--crimson) / 0.15);
+}
+
+/* Glass effect */
+.glass {
+  background: rgb(var(--panel) / 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Noise Katmanı Kaldırıldı - Temiz Obsidian Görünümü */
+
+/* Animation utilities */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgb(var(--crimson) / 0.2);
+  }
+  50% {
+    box-shadow: 0 0 40px rgb(var(--crimson) / 0.4);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Global Button Styles */
+.btn-primary {
+  @apply bg-crimson text-bg font-black uppercase tracking-widest text-xs px-5 py-2.5 rounded-xl 
+         transition-all duration-300 hover:scale-105 active:scale-95 
+         shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)]
+         border border-white/10 hover:border-white/20;
+}
+
+.btn-secondary {
+  @apply bg-panel2 text-muted font-bold uppercase tracking-widest text-[10px] px-4 py-2 rounded-xl
+         border border-borderc transition-all duration-300
+         hover:text-text-primary hover:border-crimson/40 hover:bg-black/40;
+}
+
+/* Material Symbols - Premium Configuration */
+.material-symbols-outlined {
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 200,
+    "GRAD" 0,
+    "opsz" 24;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hover effect for interactive icons */
+.icon-button:hover .material-symbols-outlined {
+  font-variation-settings:
+    "FILL" 1,
+    "wght" 300,
+    "GRAD" 0,
+    "opsz" 24;
+  text-shadow: 0 0 15px rgb(var(--crimson) / 0.5);
+}
