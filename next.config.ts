@@ -3,41 +3,24 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   images: {
-    domains: ["res.cloudinary.com", "i.pinimg.com", "img.icons8.com", "img.youtube.com"],
-  },
-  async redirects() {
-    return [
+    remotePatterns: [
       {
-        source: '/base',
-        destination: '/admin/base',
-        permanent: true,
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
       },
       {
-        source: '/wizard',
-        destination: '/admin/wizard',
-        permanent: true,
+        protocol: 'https',
+        hostname: 'i.pinimg.com',
       },
       {
-        source: '/media',
-        destination: '/admin/media',
-        permanent: true,
+        protocol: 'https',
+        hostname: 'img.icons8.com',
       },
       {
-        source: '/wardrobe',
-        destination: '/admin/wardrobe',
-        permanent: true,
+        protocol: 'https',
+        hostname: 'img.youtube.com',
       },
-      {
-        source: '/environments',
-        destination: '/admin/environments',
-        permanent: true,
-      },
-      {
-        source: '/assets',
-        destination: '/admin/assets',
-        permanent: true,
-      },
-    ];
+    ],
   },
 };
 
