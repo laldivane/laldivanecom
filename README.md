@@ -1,223 +1,135 @@
-# 🎭 Lal Divane Prompt Engine
+# 🔴 Lal Divane - Official Website
 
-> **Character Design Studio & AI Visual Generation Toolkit**
+> **AI Artist & Digital Entity** - Tragic Dark-Pop from the Void
 
-Lal Divane Prompt Engine, AI influencer/müzisyen karakteri için görsel prompt üretim ve yönetim sistemidir. Modern, premium bir arayüz ile karakter görselleri, album cover'ları ve YouTube thumbnail'ları için optimize edilmiş promptlar oluşturur.
-
-![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=next.js)
-![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind-3-38B2AC?logo=tailwind-css)
+![Next.js](https://img.shields.io/badge/Next.js-15-black?style=flat-square&logo=next.js)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=flat-square&logo=typescript)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-4-38B2AC?style=flat-square&logo=tailwind-css)
 
 ---
 
-## ✨ Özellikler
+## 🌐 Live Demo
 
-### 🎨 Core Modules
-
-| Modül               | Açıklama                                                   |
-| ------------------- | ---------------------------------------------------------- |
-| **Character Forge** | Base karakter prompt editörü - JSON tree view & raw editor |
-| **Media Forge**     | Album cover & YouTube thumbnail prompt üretici             |
-| **Wardrobe**        | Kıyafet koleksiyonu yönetimi                               |
-| **Environments**    | Ortam & lokasyon kütüphanesi                               |
-| **Asset Manager**   | Üretilen görsel arşivi & prompt eşleştirme                 |
-
-### 🤖 AI Platform Desteği
-
-- **Generic** - Genel prompt formatı
-- **GROK (xAI)** - Grok Imagine için optimize
-- **SDXL** - Stable Diffusion XL formatı (negative prompt dahil)
-- **Midjourney** - MJ parametreleri desteği
-
-### 🎯 Temel Özellikler
-
-- ✅ **Tree View Editor** - Görsel JSON düzenleme
-- ✅ **Preset Yönetimi** - Kaydet, yükle, paylaş
-- ✅ **Safe Mode** - Otomatik içerik sanitizasyonu
-- ✅ **LocalStorage Persistence** - Veriler tarayıcıda saklanır
-- ✅ **Responsive Tasarım** - Mobil uyumlu arayüz
-- ✅ **Premium Dark Theme** - Crimson accent, glass morphism
+**[laldivane.com](https://laldivane.com)**
 
 ---
 
-## 🚀 Kurulum
+## 📸 Screenshots
 
-### Gereksinimler
+### Home Page
 
-- Node.js 18+
-- npm veya yarn
+![Home Page](docs/screenshots/home.png)
 
-### Kurulum Adımları
+### Links (Linktree Clone)
+
+![Links Page](docs/screenshots/links.png)
+
+---
+
+## ✨ Features
+
+### 🎨 Design System
+
+- **Obsidian & Crimson** color palette
+- Custom design tokens in `tokens.css`
+- Syne (display) + Outfit (body) typography
+- Glassmorphism and glow effects
+
+### 📱 Pages
+
+| Page           | Description                                |
+| -------------- | ------------------------------------------ |
+| `/`            | Hero section with featured release         |
+| `/discography` | Complete track archive with platform links |
+| `/music`       | Release timeline with cover art            |
+| `/videos`      | YouTube visualizer gallery                 |
+| `/links`       | Standalone Linktree-style page             |
+| `/contact`     | Contact form with API integration          |
+| `/story`       | Artist lore and background                 |
+| `/press`       | Brand kit and press assets                 |
+
+### 🔧 Technical
+
+- ⚡ Next.js 15 App Router
+- 📱 PWA ready (manifest.ts)
+- 🔍 SEO optimized (sitemap, robots.txt, OG tags)
+- 🎭 Framer Motion animations
+- 📧 Contact API (`/api/contact`)
+
+---
+
+## 🚀 Getting Started
 
 ```bash
-# Clone
-git clone https://github.com/laldivane/lal-prompt-gen.git
-cd lal-prompt-gen
-
-# Bağımlılıkları yükle
+# Install dependencies
 npm install
 
-# Development server
+# Start development server
 npm run dev
-```
 
-Tarayıcıda [http://localhost:3000](http://localhost:3000) adresini açın.
+# Build for production
+npm run build
+```
 
 ---
 
-## 📁 Proje Yapısı
+## 📁 Project Structure
 
 ```
 src/
 ├── app/
-│   ├── page.tsx          # Landing page
-│   ├── base/             # Character Forge
-│   ├── media/            # Media Forge
-│   ├── wardrobe/         # Kıyafet Yönetimi
-│   ├── environments/     # Ortam Kütüphanesi
-│   └── assets/           # Asset Manager
-├── components/
-│   ├── JsonTreeEditor    # Tree view JSON editör
-│   ├── PromptEditor      # Raw JSON editör
-│   ├── PromptOutput      # Prompt görüntüleme
-│   ├── SidebarControls   # Kontrol paneli
-│   ├── AccordionSection  # Katlanır bölümler
-│   └── ArrayEditor       # Dizi düzenleyici
-└── lib/
-    ├── template.ts       # Base karakter şablonu
-    ├── promptEngine.ts   # Prompt render engine
-    ├── promptProfiles.ts # AI platform profilleri
-    ├── promptPipeline.ts # Cover/Thumbnail pipeline
-    ├── wardrobe.ts       # Kıyafet storage
-    ├── environments.ts   # Ortam storage
-    ├── assets.ts         # Asset storage
-    └── presets.ts        # Environment/Outfit presets
+│   ├── (public)/          # Public pages with shared layout
+│   │   ├── discography/
+│   │   ├── music/
+│   │   ├── videos/
+│   │   ├── contact/
+│   │   └── ...
+│   ├── admin/             # Admin dashboard
+│   ├── links/             # Standalone links page
+│   └── api/               # API routes
+├── components/            # Reusable UI components
+├── data/                  # Static data and configurations
+│   ├── discography.ts
+│   ├── links.ts
+│   └── json/
+└── styles/
+    └── tokens.css         # Design tokens
 ```
 
 ---
 
-## 🎭 Karakter: Lal Divane
+## 🎵 Data Management
 
-Lal Divane, AI-generated Turkish music artist persona'sıdır:
+Track data is managed in `src/data/discography.ts`:
 
-- **Yaş**: 24
-- **Görünüm**: Ethereal, Turkish-Middle Eastern features
-- **Stil**: Dark feminine mystique, melancholic elegance
-- **Signature**: Burned texture on left side of face, silver nose ring
-- **Aesthetic**: Crimson & charcoal, cinematic lighting
-
----
-
-## 📸 Modül Detayları
-
-### Character Forge (`/base`)
-
-Base karakter prompt'unu düzenlemek için:
-
-- **Tree View**: Görsel JSON navigasyonu
-- **Raw JSON**: Direkt kod düzenleme
-- **Profile Selector**: Generic, Grok, SDXL
-- **Preset Management**: Kaydet/Yükle
-
-### Media Forge (`/media`)
-
-Medya içerik promptları:
-
-- **Output Types**: Album Cover, YouTube Thumbnail
-- **Typography Settings**: Font, style, intensity
-- **Aspect Ratio**: 1:1, 9:16, 16:9
-- **Text Overlay**: Şarkı adı, artist adı
-
-### Wardrobe (`/wardrobe`)
-
-Kıyafet koleksiyonu:
-
-- **Kategoriler**: Cozy, Stage, Dark, Casual, Romantic, Street
-- **Parts**: Top, Bottom, Footwear, Accessories
-- **Mood/Vibe**: Her kıyafet için mood tanımı
-
-### Environments (`/environments`)
-
-Lokasyon kütüphanesi:
-
-- **Kategoriler**: Indoor, Outdoor, Abstract, Stage, Urban, Nature
-- **Time of Day**: Dawn, Day, Dusk, Night
-- **Weather**: Clear, Cloudy, Rain, Fog, Snow
-- **Elements**: Sahne öğeleri listesi
-
-### Asset Manager (`/assets`)
-
-Görsel arşivi:
-
-- **Upload**: Görsel yükleme (base64)
-- **Prompt Linking**: Hangi prompt ile üretildi
-- **Rating**: 5 yıldızlı puanlama
-- **Tags**: Etiketleme ve arama
-- **Type Filter**: Cover, Thumbnail, Portrait, BTS, Promo
-
----
-
-## 💾 Veri Depolama
-
-Tüm veriler LocalStorage'da saklanır:
-
-| Key                   | İçerik                    |
-| --------------------- | ------------------------- |
-| `lal-template-v1`     | Active character template |
-| `lal-presets-v1`      | Kaydedilen presetler      |
-| `lal-wardrobe-v1`     | Kıyafet koleksiyonu       |
-| `lal-environments-v1` | Ortam kütüphanesi         |
-| `lal-assets-v1`       | Asset arşivi              |
-
----
-
-## 🎨 Tasarım Sistemi
-
-Premium dark theme:
-
-- **Background**: `#0a0a0c` (deep charcoal)
-- **Panel**: `#111114` (elevated surface)
-- **Accent**: `#dc2626` (crimson)
-- **Text**: `#f5f5f7` (off-white)
-
-Özellikler:
-
-- Glass morphism (backdrop-blur)
-- Subtle crimson glow effects
-- Smooth transitions & animations
-- Custom scrollbars
-
----
-
-## 📋 Scripts
-
-```bash
-npm run dev      # Development server
-npm run build    # Production build
-npm run start    # Production server
-npm run lint     # ESLint check
+```typescript
+{
+  id: "senin-adin",
+  title: "Senin Adın",
+  catalogId: "LAL-009",
+  type: "single",
+  releaseDate: "2025-01-10",
+  status: "live",
+  visualizerId: "vFmUyZfi4Hw",
+  platforms: {
+    spotify: "https://...",
+    appleMusic: "https://...",
+    // ...
+  }
+}
 ```
 
 ---
 
-## 🛣️ Roadmap
+## 📝 License
 
-- [ ] Supabase entegrasyonu (cloud sync)
-- [ ] Cloudinary görsel hosting
-- [ ] Lyrics Forge modülü
-- [ ] Keyboard shortcuts
-- [ ] Export/Import presets
-- [ ] Multi-character support
+© 2026 Lal Divane. All rights reserved.
 
 ---
 
-## 📄 Lisans
+## 🔗 Links
 
-Private repository - All rights reserved.
-
----
-
-<p align="center">
-  <strong>🎭 Lal Divane Prompt Engine</strong><br>
-  <em>Character Design Studio</em>
-</p>
+- [Spotify](https://open.spotify.com/artist/3fjP5gZnfxdVVnW7mufudD)
+- [YouTube](https://www.youtube.com/channel/UCdZxDgQmilzTqDobXse6Bwg)
+- [Instagram](https://instagram.com/laldivanemusic)
+- [Twitter/X](https://x.com/laldivanemusic)
