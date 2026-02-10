@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { pageContent } from "@/data/content";
 
 export default function Hero() {
   return (
@@ -29,29 +30,29 @@ export default function Hero() {
           className="mb-8"
         >
           <span className="inline-block px-3 sm:px-4 py-1 rounded-full border border-crimson/30 bg-crimson/10 text-[8px] sm:text-[10px] font-black tracking-[0.3em] sm:tracking-[0.4em] text-crimson uppercase mb-6 sm:mb-8">
-            Signal Verified
+            {pageContent.hero.badge}
           </span>
           
           <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-[10rem] font-display font-black leading-none tracking-tighter mb-4 sm:mb-6 text-foreground">
-            LAL <span className="text-crimson drop-shadow-[0_0_30px_rgba(176,0,32,0.4)]">DIVANE</span>
+            {pageContent.hero.titlePrefix} <span className="text-crimson drop-shadow-[0_0_30px_rgba(244,30,66,0.4)]">{pageContent.hero.titleMain}</span>
           </h1>
           
           <p className="text-xs sm:text-sm md:text-xl font-light tracking-[0.15em] sm:tracking-[0.2em] text-muted max-w-xl sm:max-w-2xl mx-auto uppercase mb-8 sm:mb-12 px-2">
-            Experience the tragic elegance of the digital void.
+            {pageContent.hero.subtitle}
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
             <Link 
               href="/releases" 
-              className="w-full sm:w-auto bg-foreground text-bg px-8 sm:px-10 py-3 sm:py-4 rounded-full font-black text-[10px] sm:text-xs uppercase tracking-[0.15em] sm:tracking-[0.2em] hover:bg-crimson hover:text-foreground transition-all duration-500 shadow-[0_0_40px_rgba(255,255,255,0.1)] hover:shadow-[0_0_40px_rgba(176,0,32,0.4)]"
+              className="w-full sm:w-auto bg-foreground text-bg px-8 sm:px-10 py-3 sm:py-4 rounded-full font-black text-[10px] sm:text-xs uppercase tracking-[0.15em] sm:tracking-[0.2em] hover:bg-crimson hover:text-foreground transition-all duration-500 shadow-[0_0_40px_rgba(255,255,255,0.1)] hover:shadow-[0_0_40px_rgba(244,30,66,0.4)]"
             >
-              Listen Now
+              {pageContent.hero.ctaPrimary}
             </Link>
             <Link 
               href="/story" 
               className="w-full sm:w-auto px-8 sm:px-10 py-3 sm:py-4 rounded-full border border-white/10 font-black text-[10px] sm:text-xs uppercase tracking-[0.15em] sm:tracking-[0.2em] hover:bg-white/5 transition-all duration-500"
             >
-              The Manifesto
+              {pageContent.hero.ctaSecondary}
             </Link>
           </div>
         </motion.div>

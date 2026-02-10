@@ -1,13 +1,13 @@
 import Link from "next/link";
-import Image from "next/image";
 import { socialLinks, legalLinks, navLinks } from "@/data/links";
-import { PLATFORM_ICONS } from "@/data/platformIcons";
+import SocialBadge from "@/components/SocialBadge";
 
 export default function Footer() {
   return (
     <footer className="relative border-t border-white/5 bg-bg pt-12 sm:pt-20 pb-8 sm:pb-10 overflow-hidden">
       {/* Ambient Glow */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[400px] sm:w-[800px] h-[300px] sm:h-[500px] bg-crimson/5 blur-[80px] sm:blur-[120px] rounded-full pointer-events-none" />
+      {/* Ambient Glow - Removed for performance */}
+      {/* <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[400px] sm:w-[800px] h-[300px] sm:h-[500px] bg-crimson/5 blur-[80px] sm:blur-[120px] rounded-full pointer-events-none" /> */}
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 lg:gap-16 mb-12 sm:mb-20">
@@ -37,55 +37,21 @@ export default function Footer() {
           {/* Socials */}
           <div className="space-y-4 sm:space-y-6">
             <h4 className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] text-crimson">Presence</h4>
-            <nav className="flex flex-col gap-3 sm:gap-4">
-              <a href={socialLinks.spotify} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs sm:text-sm text-muted hover:text-crimson transition-colors w-fit group">
-                <div className="relative w-3.5 h-3.5 opacity-60 group-hover:opacity-100 transition-opacity">
-                  <Image src={PLATFORM_ICONS.spotify} alt="Spotify" fill className="object-contain transition-all group-hover:scale-110" />
-                </div>
-                Spotify
-              </a>
-              <a href={socialLinks.youtube} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs sm:text-sm text-muted hover:text-crimson transition-colors w-fit group">
-                <div className="relative w-3.5 h-3.5 opacity-60 group-hover:opacity-100 transition-opacity">
-                  <Image src={PLATFORM_ICONS.youtube} alt="YouTube" fill className="object-contain transition-all group-hover:scale-110" />
-                </div>
-                YouTube
-              </a>
-              <a href={socialLinks.youtubeMusic} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs sm:text-sm text-muted hover:text-crimson transition-colors w-fit group">
-                <div className="relative w-3.5 h-3.5 opacity-60 group-hover:opacity-100 transition-opacity">
-                  <Image src={PLATFORM_ICONS.youtubeMusic} alt="YouTube Music" fill className="object-contain transition-all group-hover:scale-110" />
-                </div>
-                YouTube Music
-              </a>
-              <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs sm:text-sm text-muted hover:text-crimson transition-colors w-fit group">
-                <div className="relative w-3.5 h-3.5 opacity-60 group-hover:opacity-100 transition-opacity">
-                  <Image src={PLATFORM_ICONS.instagram} alt="Instagram" fill className="object-contain transition-all group-hover:scale-110" />
-                </div>
-                Instagram
-              </a>
-              <a href={socialLinks.x} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs sm:text-sm text-muted hover:text-crimson transition-colors w-fit group">
-                <div className="relative w-3.5 h-3.5 opacity-60 group-hover:opacity-100 transition-opacity">
-                  <Image src={PLATFORM_ICONS.x} alt="X" fill className="object-contain transition-all group-hover:scale-110" />
-                </div>
-                X / Twitter
-              </a>
-              <a href={socialLinks.deezer} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs sm:text-sm text-muted hover:text-crimson transition-colors w-fit group">
-                <div className="relative w-3.5 h-3.5 opacity-60 group-hover:opacity-100 transition-opacity">
-                  <Image src={PLATFORM_ICONS.deezer} alt="Deezer" fill className="object-contain transition-all group-hover:scale-110" />
-                </div>
-                Deezer
-              </a>
-              <a href={socialLinks.soundcloud} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs sm:text-sm text-muted hover:text-crimson transition-colors w-fit group">
-                <div className="relative w-3.5 h-3.5 opacity-60 group-hover:opacity-100 transition-opacity">
-                  <Image src={PLATFORM_ICONS.soundcloud} alt="SoundCloud" fill className="object-contain transition-all group-hover:scale-110" />
-                </div>
-                SoundCloud
-              </a>
-              <a href={socialLinks.genius} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs sm:text-sm text-muted hover:text-crimson transition-colors w-fit group">
-                <div className="relative w-3.5 h-3.5 opacity-60 group-hover:opacity-100 transition-opacity">
-                  <Image src={PLATFORM_ICONS.genius} alt="Genius" fill className="object-contain transition-all group-hover:scale-110" />
-                </div>
-                Genius
-              </a>
+            <nav className="flex flex-row flex-wrap gap-4">
+              <SocialBadge platform="spotify" href={socialLinks.spotify} label="Spotify" />
+              <SocialBadge platform="youtube" href={socialLinks.youtube} label="YouTube" />
+              <SocialBadge platform="youtubeMusic" href={socialLinks.youtubeMusic} label="YouTube Music" />
+              <SocialBadge platform="instagram" href={socialLinks.instagram} label="Instagram" />
+              <SocialBadge platform="x" href={socialLinks.x} label="X / Twitter" />
+              <SocialBadge platform="tidal" href={socialLinks.tidal} label="Tidal" />
+              <SocialBadge platform="amazonMusic" href={socialLinks.amazonMusic} label="Amazon Music" />
+              <SocialBadge platform="soundcloud" href={socialLinks.soundcloud} label="SoundCloud" />
+              <SocialBadge platform="genius" href={socialLinks.genius} label="Genius" />
+              <SocialBadge platform="anghami" href={socialLinks.anghami} label="Anghami" />
+              <SocialBadge platform="boomplay" href={socialLinks.boomplay} label="Boomplay" />
+              <SocialBadge platform="qobuz" href={socialLinks.qobuz} label="Qobuz" />
+              <SocialBadge platform="kugou" href={socialLinks.kugou} label="Kugou" />
+              <SocialBadge platform="audiomack" href={socialLinks.audiomack} label="Audiomack" />
             </nav>
           </div>
 
@@ -113,7 +79,7 @@ export default function Footer() {
           <div className="flex items-center justify-center sm:justify-end gap-3 sm:gap-6 flex-wrap">
             <span className="opacity-40 hover:opacity-100 transition-opacity">SONGWRITER: CANBERK MANSUROĞLU</span>
             <span className="bg-crimson/20 w-px h-3 hidden sm:block"></span>
-            <a href="https://icons8.com" target="_blank" rel="noopener noreferrer" className="hover:text-crimson transition-colors opacity-40">ICONS8</a>
+            <a href="https://icons8.com" target="_blank" rel="noopener noreferrer" className="hover:text-crimson transition-colors opacity-80">ICONS8</a>
           </div>
         </div>
       </div>

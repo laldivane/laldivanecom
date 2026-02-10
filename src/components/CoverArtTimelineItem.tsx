@@ -29,7 +29,7 @@ export default function CoverArtTimelineItem({
 
       {/* --- CONTENT CARD --- */}
       <div className="flex-1 block">
-          <div className="relative bg-[#0a0a0c] border border-white/5 rounded-2xl overflow-hidden hover:border-white/20 transition-all duration-300 group-hover:translate-x-2 group-hover:shadow-2xl">
+          <div className="relative bg-bg-elevated border border-white/5 rounded-2xl overflow-hidden hover:border-white/20 transition-all duration-300 group-hover:translate-x-2 group-hover:shadow-2xl">
                
                <div className="flex flex-col md:flex-row">
                    {/* Art Section */}

@@ -23,7 +23,7 @@ export default function PressContent() {
           <h1 className="text-5xl sm:text-7xl md:text-9xl font-display font-black tracking-tighter uppercase leading-[0.8]">BRAND KIT</h1>
           <div className="flex items-center gap-4">
             <div className="h-px w-12 bg-crimson" />
-            <p className="text-muted tracking-[0.4em] font-light uppercase text-[10px] sm:text-xs">Official visual assets & identity guide</p>
+            <p className="text-muted tracking-[0.4em] font-light uppercase text-[10px] sm:text-xs">Official Visual Assets & Identity Guide</p>
           </div>
         </header>
 
@@ -116,12 +116,12 @@ export default function PressContent() {
                         <span className="material-symbols-outlined text-muted group-hover:text-crimson">download</span>
                     </a>
                     <a href="/assets/Crimson Frequencies.png" download className="flex items-center justify-between p-5 rounded-2xl bg-white/5 border border-white/5 hover:border-crimson/40 hover:bg-crimson/5 transition-all group">
-                        <span className="text-[10px] font-black uppercase tracking-widest">Sana Yanık Cover</span>
+                        <span className="text-[10px] font-black uppercase tracking-widest">Crimson Frequencies Cover</span>
                         <span className="material-symbols-outlined text-muted group-hover:text-crimson">download</span>
                     </a>
                     <div className="pt-4">
                         <p className="text-[9px] text-muted uppercase tracking-widest font-black leading-relaxed">
-                            All visual assets are © 2026 Lal Divane. 
+                            All Visual Assets are © 2026 Lal Divane. 
                             Unauthorized manipulation is prohibited.
                         </p>
                     </div>
@@ -130,8 +130,8 @@ export default function PressContent() {
                 <div className="pt-8">
                     <h2 className="text-[10px] font-black uppercase tracking-[0.4em] text-crimson mb-6">Contact</h2>
                     <p className="text-xs text-muted/60 leading-relaxed mb-4">For hi-res RAW files and licensing inquiries:</p>
-                    <a href="mailto:press@laldivane.com" className="text-sm font-black text-foreground hover:text-crimson transition-colors uppercase tracking-widest block border-b border-white/10 pb-2">
-                        press@laldivane.com
+                    <a href="mailto:laldivanemusic@gmail.com" className="text-sm font-black text-foreground hover:text-crimson transition-colors uppercase tracking-widest block border-b border-white/10 pb-2">
+                        laldivanemusic@gmail.com
                     </a>
                 </div>
             </section>

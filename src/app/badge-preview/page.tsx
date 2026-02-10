@@ -1,0 +1,37 @@
+export default function BadgePreview() {
+  return (
+    <div className="min-h-screen flex flex-col items-center justify-center bg-[#1a1a1a] gap-8">
+      <style>{`
+        /* User provided CSS */
+        .ld-badge{
+          width:44px;height:44px;
+          display:inline-flex;align-items:center;justify-content:center;
+          background:#0B0B10; /* Obsidian */
+          border:1px solid rgba(209,18,58,.35); /* Crimson */
+          border-radius:14px;
+          box-shadow: 0 0 0 rgba(209,18,58,0);
+          transition: transform .15s ease, box-shadow .2s ease, border-color .2s ease;
+          text-decoration: none;
+        }
+        .ld-icon{
+          width:22px;height:22px;
+          filter: drop-shadow(0 0 0 rgba(209,18,58,0));
+          opacity:.95;
+          display: block;
+        }
+        .ld-badge:hover{
+          transform: translateY(-1px);
+          border-color: rgba(209,18,58,.75);
+          box-shadow: 0 10px 30px rgba(209,18,58,.18);
+        }
+      `}</style>
+      
+      <div className="text-white/50 text-sm font-mono mb-4">Hover to see effect</div>
+      
+      <a className="ld-badge" href="https://open.spotify.com/artist/XXXX" aria-label="Spotify">
+        <img src="/assets/icons/spotify.svg" alt="Spotify" className="ld-icon" />
+      </a>
+      
+    </div>
+  );
+}

@@ -37,7 +37,7 @@ export default function VideoTimelineItem({
         rel="noopener noreferrer"
         className="flex-1 block"
       >
-          <div className="relative bg-[#0a0a0c] border border-white/5 rounded-2xl overflow-hidden hover:border-crimson/40 transition-all duration-300 group-hover:translate-x-2 group-hover:shadow-[0_10px_40px_-10px_rgba(220,20,60,0.1)]">
+          <div className="relative bg-bg-elevated border border-white/5 rounded-2xl overflow-hidden hover:border-crimson/40 transition-all duration-300 group-hover:translate-x-2 group-hover:shadow-[0_10px_40px_-10px_rgba(220,20,60,0.1)]">
                
                <div className="flex flex-col md:flex-row">
                    {/* Thumbnail Section */}

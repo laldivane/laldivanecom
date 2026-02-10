@@ -1,0 +1,17 @@
+{
+  "hero": {
+    "badge": "Sinyal Onaylandı",
+    "titlePrefix": "LAL",
+    "titleMain": "DIVANE",
+    "subtitle": "Dijital boşluğun trajik zarafetini deneyimleyin.",
+    "ctaPrimary": "Şimdi dinle",
+    "ctaSecondary": "Manifesto"
+  },
+  "home": {
+    "featuredSignalBadge": "Öne Çıkan Sinyal",
+    "featuredSignalTitle": "",
+    "loreBadge": "Lore Transmission 0.1",
+    "loreQuote": "Ben senin makinenin içindeki hayaletim, kalp atışındaki arıza, hiç gelmemiş bir gelecekten gelen siren çağrısıyım.",
+    "connectButton": "Boşlukla bağlantı kurun"
+  }
+}

@@ -6,6 +6,7 @@ import Image from "next/image";
 import CoverArtTimelineItem from "@/components/CoverArtTimelineItem";
 import { PLATFORM_ICONS } from "@/data/platformIcons";
 import { socialLinks } from "@/data/links";
+import SocialBadge from "@/components/SocialBadge";
 
 const COVER_ARTS = [
     { title: "SANA YANIK", url: "https://i.pinimg.com/736x/90/6d/53/906d534667e68bcfc090cfadac16ca40.jpg", date: "FEB 2026" },
@@ -44,17 +45,13 @@ export default function MusicContent() {
                 <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
                   <div className="flex gap-4">
                     {release.platforms.spotify && (
-                      <a href={release.platforms.spotify} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-white text-bg flex items-center justify-center hover:bg-crimson hover:text-white transition-all group/icon">
-                        <div className="relative w-6 h-6 group-hover/icon:scale-110 transition-transform">
-                          <Image src={PLATFORM_ICONS.spotify} alt="Spotify" fill className="object-contain" />
-                        </div>
-                      </a>
+                      <SocialBadge platform="spotify" href={release.platforms.spotify} label="Spotify" />
                     )}
                   </div>
                 </div>
               </div>
-              <h3 className="text-xl sm:text-2xl font-display font-black tracking-tighter text-foreground group-hover:text-crimson transition-colors uppercase leading-none mb-2">{release.title}</h3>
-              <p className="text-[10px] sm:text-xs text-muted font-black uppercase tracking-[0.2em]">{release.type} • {release.releaseDate}</p>
+              <h3 className="text-xl sm:text-2xl font-display font-black tracking-tighter text-foreground group-hover:text-crimson transition-colors uppercase leading-[0.85] mb-3 break-words">{release.title}</h3>
+              <p className="text-[10px] sm:text-xs text-muted font-black uppercase tracking-[0.2em] relative z-10">{release.type} • {release.releaseDate}</p>
             </motion.div>
           ))}
         </div>
@@ -72,7 +69,7 @@ export default function MusicContent() {
             className="group flex flex-col sm:flex-row sm:items-center gap-6 p-8 rounded-3xl border border-white/10 bg-white/[0.02] hover:border-crimson/40 hover:bg-crimson/5 transition-all duration-500 mb-20 sm:mb-32 max-w-3xl"
           >
             {/* YouTube Music Icon */}
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-crimson to-black flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:shadow-[0_0_30px_rgba(176,0,32,0.4)] transition-all duration-500 relative overflow-hidden">
+            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-crimson to-black flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:shadow-[0_0_30px_rgba(244,30,66,0.4)] transition-all duration-500 relative overflow-hidden">
                 <div className="relative w-8 h-8">
                   <Image src={PLATFORM_ICONS.youtubeMusic} alt="YouTube Music" fill className="object-contain" />
                 </div>

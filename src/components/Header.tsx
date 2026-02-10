@@ -20,14 +20,14 @@ export default function Header() {
 
   return (
     <header className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 ${
-      scrolled ? "py-4 bg-bg/80 backdrop-blur-2xl border-b border-white/10" : "py-6 sm:py-8 bg-transparent"
+      scrolled ? "py-4 bg-bg/95 backdrop-blur-md border-b border-white/10" : "py-6 sm:py-8 bg-transparent"
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
         <Link 
           href="/" 
           className="text-2xl sm:text-3xl font-display font-black tracking-tighter hover:text-crimson transition-all duration-500 group"
         >
-          LAL <span className="text-crimson group-hover:drop-shadow-[0_0_15px_rgba(176,0,32,0.6)]">DIVANE</span>
+          LAL <span className="text-crimson group-hover:drop-shadow-[0_0_15px_rgba(244,30,66,0.6)]">DIVANE</span>
         </Link>
 
         {/* Desktop Nav */}
@@ -42,7 +42,7 @@ export default function Header() {
             >
               {link.label}
               <span className={`absolute -bottom-2 left-0 h-[2px] bg-crimson transition-all duration-500 ${
-                pathname === link.href ? "w-full shadow-[0_0_10px_rgba(176,0,32,0.5)]" : "w-0 group-hover:w-full"
+                pathname === link.href ? "w-full shadow-[0_0_10px_rgba(244,30,66,0.5)]" : "w-0 group-hover:w-full"
               }`} />
             </Link>
           ))}

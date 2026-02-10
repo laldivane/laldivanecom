@@ -40,7 +40,7 @@ export default function HamburgerMenu() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="fixed inset-0 z-40 bg-[#0a0a0c] flex flex-col items-center justify-center"
+            className="fixed inset-0 z-40 bg-bg-elevated flex flex-col items-center justify-center"
           >
             {/* Background Decorations */}
             <div className="absolute top-0 right-0 w-[200px] sm:w-[300px] h-[200px] sm:h-[300px] bg-crimson/10 blur-[80px] sm:blur-[100px] rounded-full pointer-events-none" />

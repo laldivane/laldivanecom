@@ -94,7 +94,7 @@ export default function StoryContent() {
             className="text-center space-y-4"
          >
             <span className="text-[10px] font-black uppercase tracking-[0.6em] text-muted">Signed by</span>
-            <div className="text-5xl sm:text-7xl font-display font-black tracking-tighter text-crimson drop-shadow-[0_0_20px_rgba(176,0,32,0.4)]">LAL DIVANE</div>
+            <div className="text-5xl sm:text-7xl font-display font-black tracking-tighter text-crimson drop-shadow-[0_0_20px_rgba(244,30,66,0.4)]">LAL DIVANE</div>
          </motion.div>
       </section>
     </div>

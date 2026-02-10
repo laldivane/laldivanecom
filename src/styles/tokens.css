@@ -1,21 +1,32 @@
+/*
+ * DESIGN TOKENS - Single Source of Truth
+ * All colors, spacing, and theme values defined here
+ */
+
 :root {
-  /* Obsidian Base */
-  --color-obsidian-950: #050508;
-  --color-obsidian-900: #0a0a0f;
-  --color-obsidian-800: #12121a;
-  --color-obsidian-700: #1a1a24;
+  /* === COLORS === */
+  /* Primary Obsidian Palette */
+  --color-bg: #050508;
+  --color-bg-elevated: #0a0a0f;
+  --color-bg-surface: #12121a;
   
   /* Crimson Brand */
-  --color-crimson-base: #B00020;
-  --color-crimson-glow: #dc2626;
-  --color-crimson-deep: #7f1d1d;
+  --color-crimson: #f41e42;
+  --color-crimson-glow: rgba(244, 30, 66, 0.35);
   
-  /* Neutral / Text */
-  --color-text-main: #EDEDED;
-  --color-text-muted: rgba(237, 237, 237, 0.65);
-  --color-text-dark: rgba(237, 237, 237, 0.35);
+  /* Text & UI */
+  --color-foreground: #ededed;
+  --color-muted: rgba(237, 237, 237, 0.65);
+  --color-border: rgba(237, 237, 237, 0.12);
+  
+  /* RGB values for opacity utilities */
+  --rgb-crimson: 244, 30, 66;
 
-  /* Spacing Tokens */
+  /* === TYPOGRAPHY === */
+  --font-sans: "Outfit", sans-serif;
+  --font-display: "Syne", sans-serif;
+
+  /* === SPACING === */
   --space-unit: 4px;
   --space-xs: calc(var(--space-unit) * 1);
   --space-sm: calc(var(--space-unit) * 2);
@@ -23,26 +34,13 @@
   --space-lg: calc(var(--space-unit) * 6);
   --space-xl: calc(var(--space-unit) * 8);
 
-  /* Radius Tokens */
+  /* === RADIUS === */
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 16px;
   --radius-full: 9999px;
 
-  /* Shadows & Glows */
-  --shadow-crimson: 0 0 20px rgba(176, 0, 32, 0.25);
-  --shadow-crimson-lg: 0 0 40px rgba(176, 0, 32, 0.4);
-}
-
-/* Theme Mappings */
-.theme-default {
-  --bg-primary: var(--color-obsidian-950);
-  --bg-secondary: var(--color-obsidian-900);
-  --bg-elevated: var(--color-obsidian-800);
-  
-  --accent: var(--color-crimson-base);
-  --accent-glow: var(--color-crimson-glow);
-  
-  --border-subtle: rgba(255, 255, 255, 0.05);
-  --border-active: rgba(176, 0, 32, 0.4);
+  /* === SHADOWS === */
+  --shadow-crimson: 0 0 20px rgba(244, 30, 66, 0.25);
+  --shadow-crimson-lg: 0 0 40px rgba(244, 30, 66, 0.4);
 }

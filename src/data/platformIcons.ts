@@ -1,22 +1,24 @@
-// Platform Icons - Use official brand icons customized with Crimson color (#B00020)
+// Platform Icons - Use official brand icons
 export const PLATFORM_ICONS = {
-  spotify: "/assets/icons/spotify.svg",
-  appleMusic: "/assets/icons/apple-music.svg",
-  youtubeMusic: "/assets/icons/youtube-music.svg",
-  youtube: "/assets/icons/youtube.svg",
-  deezer: "/assets/icons/deezer.svg",
-  amazonMusic: "/assets/icons/youtube-music.svg", // Using generic play for now
-  tidal: "/assets/icons/tidal.svg",
-  soundcloud: "/assets/icons/soundcloud.svg",
-  anghami: "/assets/icons/youtube-music.svg", // Placeholder
-  instagram: "/assets/icons/instagram.svg",
-  tiktok: "/assets/icons/tiktok.svg",
-  x: "/assets/icons/x.svg",
-  itunes: "/assets/icons/itunes.svg",
-  pandora: "/assets/icons/pandora.svg",
-  boomplay: "/assets/icons/boomplay.svg",
-  qobuz: "/assets/icons/qobuz.svg",
-  genius: "/assets/icons/genius.svg",
+  spotify: "/assets/icons/icons8-spotify.svg",
+  appleMusic: "/assets/icons/icons8-music.svg", // Using generic music note for Apple Music
+  youtubeMusic: "/assets/icons/icons8-youtube-music.svg",
+  youtube: "/assets/icons/icons8-youtube.svg",
+  deezer: "/assets/icons/icons8-deezer.svg",
+  amazonMusic: "/assets/icons/icons8-music.svg", // Using generic play for now
+  tidal: "/assets/icons/icons8-tidal.svg",
+  soundcloud: "/assets/icons/icons8-soundcloud.svg",
+  anghami: "/assets/icons/icons8-anghami.svg",
+  instagram: "/assets/icons/icons8-instagram.svg",
+  tiktok: "/assets/icons/icons8-tiktok.svg",
+  x: "/assets/icons/icons8-x.svg",
+  itunes: "/assets/icons/icons8-itunes.svg",
+  pandora: "/assets/icons/icons8-pandora-app.svg",
+  boomplay: "/assets/icons/icons8-boomplay.svg",
+  audiomack: "/assets/icons/icons8-audiomack.svg",
+  qobuz: "/assets/icons/icons8-qobuz.svg",
+  genius: "/assets/icons/icons8-genius.svg",
+  kugou: "/assets/icons/icons8-music.svg", // Using generic music icon for Kugou
 };
 
 export type PlatformKey = keyof typeof PLATFORM_ICONS;

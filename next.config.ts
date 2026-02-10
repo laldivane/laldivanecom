@@ -28,6 +28,14 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'www.svgrepo.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'scontent-ams2-1.cdninstagram.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn.sanity.io',
+      },
     ],
   },
 };

@@ -22,7 +22,7 @@ export default function AchievementTimelineItem({
           {date}
         </span>
         {isHighlighted && (
-          <div className="w-2 h-2 rounded-full bg-crimson animate-pulse shadow-[0_0_10px_rgba(176,0,32,0.8)]" />
+          <div className="w-2 h-2 rounded-full bg-crimson animate-pulse shadow-[0_0_10px_rgba(244,30,66,0.8)]" />
         )}
       </div>
       
@@ -36,7 +36,7 @@ export default function AchievementTimelineItem({
       </div>
 
       <div className={`mt-8 h-[1px] transition-all duration-1000 ${
-        isHighlighted ? 'bg-crimson w-full shadow-[0_0_10px_rgba(176,0,32,0.5)]' : 'bg-white/10 group-hover:bg-crimson/30 group-hover:w-full'
+        isHighlighted ? 'bg-crimson w-full shadow-[0_0_10px_rgba(244,30,66,0.5)]' : 'bg-white/10 group-hover:bg-crimson/30 group-hover:w-full'
       }`} />
     </div>
   );
