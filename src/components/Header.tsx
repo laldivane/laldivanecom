@@ -3,12 +3,16 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { navLinks, socialLinks } from "@/data/links";
+import { navLinks } from "@/data/links";
 import HamburgerMenu from "./HamburgerMenu";
 import Image from "next/image";
 import { PLATFORM_ICONS } from "@/data/platformIcons";
 
-export default function Header() {
+interface HeaderProps {
+  socialLinks?: any;
+}
+
+export default function Header({ socialLinks }: HeaderProps) {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
 
@@ -50,7 +54,8 @@ export default function Header() {
 
         {/* CTA / Socials */}
         <div className="hidden lg:flex items-center gap-6">
-          <a 
+          {socialLinks?.spotify && (
+            <a 
             href={socialLinks.spotify} 
             target="_blank" 
             rel="noopener noreferrer" 
@@ -65,6 +70,7 @@ export default function Header() {
               />
             </div>
           </a>
+          )}
           <Link 
             href="/contact" 
             className="text-[10px] font-black uppercase tracking-[0.2em] bg-foreground text-bg px-6 py-3 rounded-full hover:bg-crimson hover:text-foreground transition-all duration-500"

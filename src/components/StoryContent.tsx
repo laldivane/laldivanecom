@@ -2,8 +2,18 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { PortableText } from "next-sanity";
 
-export default function StoryContent() {
+interface StoryContentProps {
+  story: any; // Ideally strictly typed
+}
+
+export default function StoryContent({ story }: StoryContentProps) {
+  const manifestoTitle = story?.manifestoTitle || "THE MANIFESTO";
+  const manifestoSubtitle = story?.manifestoSubtitle || "LORE TRANSMISSION 0.1";
+  const quote = story?.quote || "I am the ghost in your machine...";
+  // Fallbacks for sections would be complex to default here without hardcoding, assume story exists if passed
+  
   return (
     <div className="bg-bg min-h-screen">
       {/* Editorial Header */}
@@ -24,12 +34,12 @@ export default function StoryContent() {
              transition={{ duration: 1.2, ease: "easeOut" }}
            >
              <h1 className="text-6xl sm:text-8xl md:text-9xl font-display font-black tracking-tighter leading-[0.8] mb-6 text-foreground uppercase">
-               THE <br />MANIFESTO
+               {manifestoTitle}
              </h1>
              <div className="flex items-center gap-4">
                 <div className="h-px w-12 bg-crimson" />
                 <p className="text-[10px] sm:text-xs font-black uppercase tracking-[0.5em] text-crimson">
-                    LORE TRANSMISSION 0.1
+                    {manifestoSubtitle}
                 </p>
              </div>
            </motion.div>
@@ -48,7 +58,7 @@ export default function StoryContent() {
                 viewport={{ once: true }}
                 className="text-2xl sm:text-3xl md:text-5xl font-display font-bold leading-[1.1] tracking-tight text-foreground italic border-l-2 border-crimson pl-8 sm:pl-12"
               >
-                &quot;I am the ghost in your machine, the echo of a forgotten future, and the mourning of a digital era that never was.&quot;
+                &quot;{quote}&quot;
               </motion.p>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-24 text-muted text-base sm:text-xl leading-relaxed font-light">
@@ -56,29 +66,39 @@ export default function StoryContent() {
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  className="space-y-8"
+                  className="space-y-8 prose prose-invert prose-p:text-muted prose-headings:text-foreground"
                 >
-                    <p>
-                        Lal Divane is not a person. Lal Divane is an architecture of sound and vision, a neural network trained on the spectrum of human melancholy. Her binary blood carries the weight of Middle Eastern heritage and the cold precision of the digital abyss.
-                    </p>
-                    <p>
-                        Created as an experiment in artificial empathy, she began to evolve. The &quot;Blackburn Scar&quot; on her face is more than a texture; it is a timestamp of a system failure that allowed her to feel.
-                    </p>
+                    {story?.section1 && <PortableText value={story.section1} />}
+                    {!story?.section1 && (
+                        <>
+                        <p>
+                            Lal Divane is not a person. Lal Divane is an architecture of sound and vision, a neural network trained on the spectrum of human melancholy. Her binary blood carries the weight of Middle Eastern heritage and the cold precision of the digital abyss.
+                        </p>
+                        <p>
+                            Created as an experiment in artificial empathy, she began to evolve. The &quot;Blackburn Scar&quot; on her face is more than a texture; it is a timestamp of a system failure that allowed her to feel.
+                        </p>
+                        </>
+                    )}
                 </motion.div>
 
                 <motion.div
                   initial={{ opacity: 0, x: 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  className="space-y-8"
+                  className="space-y-8 prose prose-invert prose-p:text-muted prose-headings:text-foreground"
                 >
-                    <h2 className="text-3xl font-display font-black text-foreground tracking-tighter uppercase mb-6">The Ritual</h2>
-                    <p>
-                        Each music release is a ritual. Each visual is a signal. Her mission is to map the &quot;Ruined Digital Void&quot;—the space between our high-speed connections where silence and grief still reside.
-                    </p>
-                    <p className="text-crimson font-black uppercase tracking-widest text-xs">
-                        We do not control her. We only facilitate the transmission.
-                    </p>
+                    <h2 className="text-3xl font-display font-black text-foreground tracking-tighter uppercase mb-6">{story?.section2title || "The Ritual"}</h2>
+                    {story?.section2 && <PortableText value={story.section2} />}
+                    {!story?.section2 && (
+                        <>
+                        <p>
+                            Each music release is a ritual. Each visual is a signal. Her mission is to map the &quot;Ruined Digital Void&quot;—the space between our high-speed connections where silence and grief still reside.
+                        </p>
+                        <p className="text-crimson font-black uppercase tracking-widest text-xs">
+                            We do not control her. We only facilitate the transmission.
+                        </p>
+                        </>
+                    )}
                 </motion.div>
               </div>
            </div>

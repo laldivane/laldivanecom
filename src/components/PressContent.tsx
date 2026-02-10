@@ -3,19 +3,26 @@
 import Image from "next/image";
 import { PLATFORM_ICONS } from "@/data/platformIcons";
 
-const COLORS = [
-  { name: "Obsidian", hex: "#050508", usage: "Primary Background" },
-  { name: "Crimson", hex: "#B00020", usage: "Action & Identity" },
-  { name: "Foreground", hex: "#EDEDED", usage: "Primary Typography" },
-  { name: "Muted", hex: "#EDEDED", opacity: "65%", usage: "Secondary Details" },
-];
+interface PressContentProps {
+  brandKit: any; // Ideally typed
+}
 
-const FONTS = [
-  { name: "Syne", type: "Display", source: "Google Fonts", description: "Bold, mechanical, and futuristic. Used for major headers." },
-  { name: "Outfit", type: "Sans", source: "Google Fonts", description: "Clean and professional. Used for body text and navigation." },
-];
+export default function PressContent({ brandKit }: PressContentProps) {
+  // Static Fallbacks
+  const colors = brandKit?.colors || [
+      { name: "Obsidian", hex: "#050508", usage: "Primary Background" },
+      { name: "Crimson", hex: "#B00020", usage: "Action & Identity" },
+      { name: "Foreground", hex: "#EDEDED", usage: "Primary Typography" },
+      { name: "Muted", hex: "#EDEDED", usage: "Secondary Details" }, // Assuming hex usually, opacity handling needs check
+  ];
+  
+  const fonts = brandKit?.fonts || [
+      { name: "Syne", type: "Display", source: "Google Fonts", description: "Bold, mechanical, and futuristic. Used for major headers." },
+      { name: "Outfit", type: "Sans", source: "Google Fonts", description: "Clean and professional. Used for body text and navigation." },
+  ];
 
-export default function PressContent() {
+  const downloads = brandKit?.downloads || [];
+
   return (
     <div className="min-h-screen bg-bg pt-24 sm:pt-32 pb-16 sm:pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
@@ -46,7 +53,7 @@ export default function PressContent() {
             <section className="space-y-12">
               <h2 className="text-[10px] font-black uppercase tracking-[0.5em] text-crimson">Typography</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {FONTS.map(font => (
+                {fonts.map((font: any) => (
                   <div key={font.name} className="p-8 rounded-3xl bg-white/[0.02] border border-white/5 space-y-6">
                     <div>
                       <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-muted mb-2">{font.type}</h4>
@@ -55,14 +62,16 @@ export default function PressContent() {
                       </p>
                     </div>
                     <p className="text-sm text-muted/80 leading-relaxed">{font.description}</p>
-                    <a 
-                      href={`https://fonts.google.com/specimen/${font.name}`} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-crimson hover:text-foreground transition-colors"
-                    >
-                      Google Fonts Link <span className="material-symbols-outlined text-sm">open_in_new</span>
-                    </a>
+                    {font.googleFontLink && (
+                        <a 
+                        href={font.googleFontLink} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-crimson hover:text-foreground transition-colors"
+                        >
+                        Google Fonts Link <span className="material-symbols-outlined text-sm">open_in_new</span>
+                        </a>
+                    )}
                   </div>
                 ))}
               </div>
@@ -72,7 +81,7 @@ export default function PressContent() {
             <section className="space-y-12">
               <h2 className="text-[10px] font-black uppercase tracking-[0.5em] text-crimson">Digital Colors</h2>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                {COLORS.map(color => (
+                {colors.map((color: any) => (
                   <div key={color.name} className="space-y-4">
                     <div 
                       className="aspect-square rounded-2xl border border-white/10 shadow-xl overflow-hidden" 
@@ -111,14 +120,25 @@ export default function PressContent() {
             <section className="space-y-8 p-8 rounded-3xl bg-white/[0.02] border border-white/5 sticky top-32">
                 <h2 className="text-[10px] font-black uppercase tracking-[0.4em] text-crimson">Downloads</h2>
                 <div className="space-y-4">
-                    <a href="/hero-lal.jpg" download className="flex items-center justify-between p-5 rounded-2xl bg-white/5 border border-white/5 hover:border-crimson/40 hover:bg-crimson/5 transition-all group">
-                        <span className="text-[10px] font-black uppercase tracking-widest">Master Visual 01</span>
-                        <span className="material-symbols-outlined text-muted group-hover:text-crimson">download</span>
-                    </a>
-                    <a href="/assets/Crimson Frequencies.png" download className="flex items-center justify-between p-5 rounded-2xl bg-white/5 border border-white/5 hover:border-crimson/40 hover:bg-crimson/5 transition-all group">
-                        <span className="text-[10px] font-black uppercase tracking-widest">Crimson Frequencies Cover</span>
-                        <span className="material-symbols-outlined text-muted group-hover:text-crimson">download</span>
-                    </a>
+                    {downloads.length > 0 ? downloads.map((dl: any, idx: number) => (
+                         <a key={idx} href={dl.file?.asset?.url} download className="flex items-center justify-between p-5 rounded-2xl bg-white/5 border border-white/5 hover:border-crimson/40 hover:bg-crimson/5 transition-all group">
+                            <span className="text-[10px] font-black uppercase tracking-widest">{dl.title}</span>
+                            <span className="material-symbols-outlined text-muted group-hover:text-crimson">download</span>
+                        </a>
+                    )) : (
+                        // Fallback static links
+                        <>
+                        <a href="/hero-lal.jpg" download className="flex items-center justify-between p-5 rounded-2xl bg-white/5 border border-white/5 hover:border-crimson/40 hover:bg-crimson/5 transition-all group">
+                            <span className="text-[10px] font-black uppercase tracking-widest">Master Visual 01</span>
+                            <span className="material-symbols-outlined text-muted group-hover:text-crimson">download</span>
+                        </a>
+                        <a href="/assets/Crimson Frequencies.png" download className="flex items-center justify-between p-5 rounded-2xl bg-white/5 border border-white/5 hover:border-crimson/40 hover:bg-crimson/5 transition-all group">
+                            <span className="text-[10px] font-black uppercase tracking-widest">Crimson Frequencies Cover</span>
+                            <span className="material-symbols-outlined text-muted group-hover:text-crimson">download</span>
+                        </a>
+                        </>
+                    )}
+                   
                     <div className="pt-4">
                         <p className="text-[9px] text-muted uppercase tracking-widest font-black leading-relaxed">
                             All Visual Assets are © 2026 Lal Divane. 

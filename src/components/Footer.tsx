@@ -1,8 +1,13 @@
 import Link from "next/link";
-import { socialLinks, legalLinks, navLinks } from "@/data/links";
+import { legalLinks, navLinks } from "@/data/links";
 import SocialBadge from "@/components/SocialBadge";
 
-export default function Footer() {
+interface FooterProps {
+  socialLinks?: any;
+  footerText?: string;
+}
+
+export default function Footer({ socialLinks, footerText }: FooterProps) {
   return (
     <footer className="relative border-t border-white/5 bg-bg pt-12 sm:pt-20 pb-8 sm:pb-10 overflow-hidden">
       {/* Ambient Glow */}
@@ -38,20 +43,16 @@ export default function Footer() {
           <div className="space-y-4 sm:space-y-6">
             <h4 className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] text-crimson">Presence</h4>
             <nav className="flex flex-row flex-wrap gap-4">
-              <SocialBadge platform="spotify" href={socialLinks.spotify} label="Spotify" />
-              <SocialBadge platform="youtube" href={socialLinks.youtube} label="YouTube" />
-              <SocialBadge platform="youtubeMusic" href={socialLinks.youtubeMusic} label="YouTube Music" />
-              <SocialBadge platform="instagram" href={socialLinks.instagram} label="Instagram" />
-              <SocialBadge platform="x" href={socialLinks.x} label="X / Twitter" />
-              <SocialBadge platform="tidal" href={socialLinks.tidal} label="Tidal" />
-              <SocialBadge platform="amazonMusic" href={socialLinks.amazonMusic} label="Amazon Music" />
-              <SocialBadge platform="soundcloud" href={socialLinks.soundcloud} label="SoundCloud" />
-              <SocialBadge platform="genius" href={socialLinks.genius} label="Genius" />
-              <SocialBadge platform="anghami" href={socialLinks.anghami} label="Anghami" />
-              <SocialBadge platform="boomplay" href={socialLinks.boomplay} label="Boomplay" />
-              <SocialBadge platform="qobuz" href={socialLinks.qobuz} label="Qobuz" />
-              <SocialBadge platform="kugou" href={socialLinks.kugou} label="Kugou" />
-              <SocialBadge platform="audiomack" href={socialLinks.audiomack} label="Audiomack" />
+              {socialLinks && Object.entries(socialLinks).map(([platform, url]) => (
+                url && (
+                  <SocialBadge 
+                    key={platform} 
+                    platform={platform as any} 
+                    href={url as string} 
+                    label={platform.charAt(0).toUpperCase() + platform.slice(1)} 
+                  />
+                )
+              ))}
             </nav>
           </div>
 
@@ -72,7 +73,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="pt-6 sm:pt-10 border-t border-white/5 flex flex-col gap-4 sm:gap-6 text-center sm:text-left sm:flex-row sm:items-center sm:justify-between text-[8px] sm:text-[10px] font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-muted">
           <div className="flex items-center justify-center sm:justify-start gap-3 sm:gap-6 flex-wrap">
-            <span>© 2026 LAL DIVANE</span>
+            <span>{footerText || "© 2026 LAL DIVANE"}</span>
             <span className="opacity-20 hidden sm:inline">|</span>
             <span>NEXT-GEN ENTITY</span>
           </div>

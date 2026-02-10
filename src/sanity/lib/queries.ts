@@ -7,7 +7,17 @@ export const discographyQuery = groq`*[_type == "track"] | order(releaseDate des
 export const liveDiscographyQuery = groq`*[_type == "track" && status == "live"] | order(releaseDate desc)`;
 export const visualArchiveQuery = groq`*[_type == "visualArchive"] | order(date desc)`;
 export const storyQuery = groq`*[_type == "story"][0]`;
-export const brandKitQuery = groq`*[_type == "brandKit"][0]`;
+export const brandKitQuery = groq`*[_type == "brandKit"][0]{
+  ...,
+  downloads[]{
+    ...,
+    file{
+      asset->{
+        url
+      }
+    }
+  }
+}`;
 export const homePageQuery = groq`*[_type == "homePage"][0]`;
 
 // --- FETCH FUNCTIONS ---
