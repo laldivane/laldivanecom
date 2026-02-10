@@ -1,25 +1,16 @@
-import React from 'react';
-import Image from 'next/image';
+import Link from "next/link";
+import Image from "next/image";
+import { client } from "@/sanity/lib/client";
 
-const VIDEOS = [
-  { id: "otiS07HycEk", title: "Lal Divane - Duyuyor musun? (Official Visualizer)" },
-  { id: "9k3b6f0S3dk", title: "Lal Divane - Okyanuslar Yuttu Beni (Official Visualizer)" },
-  { id: "khWxOn_JGUY", title: "Lal Divane - Hapishane (Official Visualizer)" },
-  { id: "pNrcx_Zi0Jw", title: "Lal Divane - Cehennem (Official Visualizer)" },
-  { id: "7iXGraOb4gY", title: "Lal Divane - Sana Yanık (Official Visualizer)" },
-  { id: "85V9kFAa--E", title: "Lal Divane - Zehir (Official Visualizer)" },
-  { id: "UGNWuWsrdk8", title: "Lal Divane - Yaram Aşırı Derin (Official Visualizer)" },
-  { id: "bNmc6k92kV0", title: "Lal Divane - Korkmuyorum Manipülasyonlarından (Official Visualizer)" },
-  { id: "vFmUyZfi4Hw", title: "Lal Divane - Senin Adın (Official Visualizer)" },
-  { id: "HmUiz8QbjK0", title: "Lal Divane - Hipnotize (Official Visualizer)" },
-  { id: "rTVN4FtCQY4", title: "Lal Divane - Hatalarım Deneyim (Official Visualizer)" },
-  { id: "mJwmIJRns9g", title: "Lal Divane - Anti Kahraman (Official Visualizer)" },
-  { id: "RKtyaoq9ELc", title: "Lal Divane - Yarım Kalan Rüya (Official Visualizer)" },
-];
-
-export default function VideosPage() {
-  // Reverse to show newest first
-  const reversedVideos = [...VIDEOS].reverse();
+export default async function VideosPage() {
+  // Fetch tracks that have a visualizerId
+  const query = `*[_type == "track" && defined(visualizerId) && visualizerId != ""] | order(releaseDate desc) {
+     title,
+     visualizerId,
+     releaseDate
+  }`;
+  
+  const videos = await client.fetch(query);
 
   return (
     <div className="min-h-screen bg-bg text-foreground pt-24 sm:pt-32 pb-16 sm:pb-20">
@@ -37,14 +28,14 @@ export default function VideosPage() {
       {/* Grid Layout */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {reversedVideos.map((video, index) => {
-                const thumbnailUrl = `https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`;
-                const videoUrl = `https://www.youtube.com/watch?v=${video.id}`;
+            {videos.map((video: any, index: number) => {
+                const thumbnailUrl = `https://img.youtube.com/vi/${video.visualizerId}/maxresdefault.jpg`;
+                const videoUrl = `https://www.youtube.com/watch?v=${video.visualizerId}`;
                 const cleanTitle = video.title.replace("Lal Divane - ", "").replace(" (Official Visualizer)", "");
 
                 return (
                     <a 
-                        key={video.id}
+                        key={video.visualizerId}
                         href={videoUrl}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -78,7 +69,7 @@ export default function VideosPage() {
                                 {cleanTitle}
                             </h3>
                             <span className="text-[10px] sm:text-xs text-white/40 font-mono">
-                                BROADCAST #{reversedVideos.length - index}
+                                BROADCAST #{videos.length - index}
                             </span>
                         </div>
                     </a>
