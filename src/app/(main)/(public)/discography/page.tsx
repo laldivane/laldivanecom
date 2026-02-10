@@ -1,4 +1,4 @@
-import { getLiveDiscography, getAllDiscography } from "@/sanity/lib/queries";
+
 import { urlForImage } from "@/sanity/lib/image";
 import DiscographyContent from "@/components/DiscographyContent";
 
